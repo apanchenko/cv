@@ -9,7 +9,7 @@
             font-family: sans-serif;
         }
         body {
-            margin: 40px;
+            margin: 0.7in;
         }
         .name {
             font-size: 32px;
@@ -29,29 +29,29 @@
         .cat {
             display: block;
             margin: 24px 0 12px;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             border: 0;
         }
         .position {
             margin: 12px 0 0;
-            font-size: large;
+            font-size: 16px;
             font-weight: bold;
         }
         .period {
-            font-size: medium;
             font-weight: lighter;
             color: #444;
         }
         .company {
-            font-size: medium;
+            font-size: 14px;
             padding-left: 1.5em;
             margin: 6px 0;
         }
         .desc {
-            font-size: medium;
+            font-size: 14px;
             padding-left: 1.5em;
             margin: 6px 0;
+            line-height: 1.5;
         }
 
         a {
@@ -74,12 +74,12 @@
     <div class="name">Anton Panchenko</div>
     <address>
         <span>
-            <i class="icofont-email"></i>
-            <a href="mailto:apanchenko@gmail.com">apanchenko@gmail.com</a>
-        </span>
-        <span>
             <i class="icofont-phone"></i>
             <a href="tel:+7 (926) 497-8809">+7 (926) 497-8809</a>
+        </span>
+        <span>
+            <i class="icofont-email"></i>
+            <a href="mailto:apanchenko@gmail.com">apanchenko@gmail.com</a>
         </span>
         <span>
             <i class="icofont-linkedin"></i>
@@ -87,12 +87,12 @@
         </span>
     </address>
 
-    <div class="cat">Experience</div>
+    <div class="cat">Work Experience</div>
 
-    <div class="position">Senior Software Engineer
+    <div class="position">Back-end Developer
         <span class="period"> • <time datetime="2019-10">2019</time> - present</span>
     </div>
-    <p class="company">LATOKEN</p>
+    <p class="company"><a href="https://latoken.com/">LATOKEN</a></p>
     <p class="desc">
         Growth team technical lead. Developer of referral program, crowdsale, airdrops and trading competition
         products.<br>
@@ -103,17 +103,19 @@
     <div class="position">Developer
         <span class="period"> • <time datetime="2009-10">2009</time> - <time datetime="2019-10">2019</time></span>
     </div>
-    <p class="company">Panzar Studio</p>
+    <p class="company"><a href="https://panzar.com/">Panzar Studio</a></p>
     <p class="desc">
-        Developer of two multiplayer AAA games for PC: Panzar, Total Lockdown.
-        Created user interface framework. Responsible for game business logic, Steam integration, Chinese
-        and Arabic localization, Back-end services.
+        Developer of multiplayer AAA games: <a href="https://store.steampowered.com/app/240320/Panzar/">Panzar</a>,
+        <a href="https://store.steampowered.com/app/1121710/Total_Lockdown/">Total Lockdown</a>.
+        Created user interface framework. Responsible for game business logic, Steam integration,
+        Chinese and Arabic localization, Back-end services.<br>
+        C++11, <a href="https://www.cryengine.com/">Cry Engine</a>, <a href="https://www.unrealengine.com/en-US/">Unreal Engine</a>
     </p>
 
     <div class="position">Software Engeneer
         <span class="period"> • <time datetime="2003-01">2003</time> - <time datetime="2019-08">2009</time></span>
     </div>
-    <p class="company">Reaxion</p>
+    <p class="company"><a href="https://en.wikipedia.org/wiki/Reaxion">Reaxion</a></p>
     <p class="desc">
         BREW and J2ME applications and games development and porting.<br>
         Shipped projects: MMS Client, Evel Knievel, Rug Rats, The Longest Yard, Mahjong
@@ -146,7 +148,6 @@
         <span class="period"> • <time datetime="1993">1993</time> - <time datetime="1996">1996</time></span>
     </div>
     <ul class="desc">
-        <li>Physics, Mathematics</li>
         <li>Regional Olympiad in mathematics, 1st place</li>
     </ul>
 
@@ -161,8 +162,8 @@
     </ul>
 
     <div class="cat">Skills</div>
-    <p class="desc">
-        Software Development • Java • C++ • Game Development • User Interface • Video Games • Agile Methodologies • Scrum • Python
-    </p>
+    <ul class="desc">
+        <li>Java • C++ • Python • Game Development • User Interface • Scrum</li>
+    </ul>
 </body>
 </html>
