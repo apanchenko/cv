@@ -2,29 +2,31 @@
 
 Generate resume in PDF format.
 
-## Initial setup
+## Initial development
 
 ```shell
 pyenv local 3.11.4
 pip install uv
+uv init
 uv venv
-. .venv/bin/activate.fish        # Activate the virtual environment
-uv pip install pytest-playwright # Initial install
-uv pip freeze | uv pip compile - -o requirements.txt # Lock the current environment.
-playwright install               # Install the required browsers
+source .venv/bin/activate.fish      # Activate the virtual environment
+uv add playwright
+uv add ruff --dev
+playwright install                  # Install the required browsers
 ```
 
 ## Generate the CV
 
 ```shell
 uv venv
-. .venv/bin/activate.fish        # Activate the virtual environment
-uv pip sync requirements.txt     # Install from a requirements.txt file.
-python main.py                   # Generate the CV
+. .venv/bin/activate.fish           # Activate the virtual environment
+uv sync
+python src/cv/main.py               # Generate the CV
 ```
 
 ## Links
 
 - [best-resume-font-size-and-type-2063125](https://www.thebalancecareers.com/best-resume-font-size-and-type-2063125)
-- [uv](https://pypi.org/project/uv/)
+- [uv](https://docs.astral.sh/uv/)
+- [ruff](https://docs.astral.sh/ruff/)
 - [playwright](https://playwright.dev/python/)
