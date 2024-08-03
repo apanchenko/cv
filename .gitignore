@@ -1,2 +1,4 @@
-/node_modules
 *.png
+*.pdf
+.venv
+.ruff_cache
