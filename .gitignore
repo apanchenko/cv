@@ -1,4 +1,6 @@
 *.png
 *.pdf
 .venv
+.env
 .ruff_cache
+.data
