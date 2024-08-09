@@ -5,10 +5,8 @@ Generate resume in PDF format.
 ## Initial development
 
 ```shell
-pyenv local 3.11.4
-pip install uv
 uv init
-uv venv
+uv venv --python 3.12.4 --preview
 source .venv/bin/activate.fish      # Activate the virtual environment
 uv add playwright
 uv add ruff --dev
