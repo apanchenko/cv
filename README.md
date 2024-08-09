@@ -5,14 +5,15 @@ Generate resume in PDF format.
 ## Initial development
 
 ```shell
-pyenv local 3.11.4
-pip install uv
 uv init
-uv venv
+uv venv --python 3.12.4 --preview
 source .venv/bin/activate.fish      # Activate the virtual environment
 uv add playwright
 uv add ruff --dev
 playwright install                  # Install the required browsers
+
+uv add prisma
+prisma generate
 ```
 
 ## Generate the CV
@@ -22,7 +23,18 @@ uv venv
 . .venv/bin/activate.fish           # Activate the virtual environment
 uv sync
 python src/cv/main.py               # Generate the CV
+
+docker compose -f compose.yml up --build -d
 ```
+
+## Backlog
+
+- simple model with [prisma](https://github.com/RobertCraigie/prisma-client-py)
+- render model [nicegui](https://nicegui.io/)
+- ci/cd with [github actions](https://docs.github.com/en/actions)
+- auth
+- editor
+- [dev container](https://code.visualstudio.com/docs/devcontainers/containers)
 
 ## Links
 

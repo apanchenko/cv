@@ -1,0 +1,14 @@
+services:
+  cv_db:
+    image: postgres:16.3-alpine
+    volumes:
+      - cv_data:/var/lib/postgresql/data/
+    ports:
+      - "5440:5432"
+    environment:
+      POSTGRES_USER:     ${POSTGRES_USR}
+      POSTGRES_PASSWORD: ${POSTGRES_PWD}
+    restart: always
+
+volumes:
+  cv_data:
