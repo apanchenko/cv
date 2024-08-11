@@ -1,0 +1,10 @@
+{
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/src"
+    },
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": false,
+    }
+}

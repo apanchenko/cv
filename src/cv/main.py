@@ -1,20 +1,17 @@
-from pathlib import Path
+#!/usr/bin/env python3
+import uvicorn
+import frontend
+from fastapi import FastAPI
 
-from playwright.sync_api import Playwright, sync_playwright
+app = FastAPI()
 
 
-def run(playwright: Playwright) -> None:
-    """Start browser and save to pdf."""
-    chromium = playwright.chromium
-    browser = chromium.launch()
-    page = browser.new_page()
-    page.goto(f'file://{Path.cwd()}/cv.html')
-    page.pdf(
-        format='A4',
-        path='Anton Panchenko CV 2024.pdf',
-    )
-    browser.close()
+@app.get('/')
+def read_root():
+    return {'Hello': 'World'}
+
+
+frontend.init(app)
 
 if __name__ == '__main__':
-    with sync_playwright() as playwright:
-        run(playwright)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
