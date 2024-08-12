@@ -16,6 +16,9 @@ docker compose down
 ## Backlog
 
 - render model [nicegui](https://nicegui.io/)
+  - do not expose db port
+  - check lock file not changed in docker
+  - reuse UV_CACHE_DIR
 - ci/cd with [github actions](https://docs.github.com/en/actions)
 - auth
 - editor
