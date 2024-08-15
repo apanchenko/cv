@@ -8,7 +8,7 @@ Generate resume in PDF format.
 uv venv --python 3.12.4 --preview
 . .venv/bin/activate.fish           # Activate the virtual environment
 uv sync
-python src/cv/main.py               # Generate the CV
+python src/cv/main.py                      # Run local server
 docker compose up --build -d
 docker compose down
 ```
@@ -17,8 +17,6 @@ docker compose down
 
 - render model [nicegui](https://nicegui.io/)
   - do not expose db port
-  - check lock file not changed in docker
-  - reuse UV_CACHE_DIR
 - ci/cd with [github actions](https://docs.github.com/en/actions)
 - auth
 - editor
