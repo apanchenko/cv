@@ -9,13 +9,14 @@ uv venv --python 3.12.4 --preview
 . .venv/bin/activate.fish           # Activate the virtual environment
 uv sync
 python src/cv/main.py                      # Run local server
+uvicorn cv.main:app --reload --port 5000
 docker compose up --build -d
 docker compose down
 ```
 
 ## Backlog
 
-- render model [nicegui](https://nicegui.io/)
+- render model
   - do not expose db port
 - ci/cd with [github actions](https://docs.github.com/en/actions)
 - auth
@@ -29,3 +30,5 @@ docker compose down
 - [ruff](https://docs.astral.sh/ruff/)
 - [playwright](https://playwright.dev/python/)
 - [prisma](https://github.com/RobertCraigie/prisma-client-py)
+- [htmx](https://htmx.org/)
+- [examples](https://github.com/marty331/fasthtmx/)
