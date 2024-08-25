@@ -1,6 +1,9 @@
-from fastapi import FastAPI, Request
+from fastapi import Depends, FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from prisma import Prisma
+
+from cv.deps import get_db
 
 app = FastAPI()
 templates = Jinja2Templates(directory="src/templates")
@@ -8,27 +11,17 @@ templates = Jinja2Templates(directory="src/templates")
 app.mount("/static", StaticFiles(directory="src/static"), name="static")
 
 @app.get("/")
-def home_page(request: Request):
+async def home_page(
+    request: Request,
+    db: Prisma = Depends(get_db),
+):
+    author = await db.author.find_first(include={
+        'address': True,
+    })
+
     return templates.TemplateResponse('index.html', {
         'request': request,
-        'name': 'Anton Panchenko',
-        'address': [
-            {
-                'icon': 'icofont-email',
-                'href': 'mailto:apanchenko@gmail.com',
-                'text': 'apanchenko@gmail.com'
-            },
-            {
-                'icon': 'icofont-telegram',
-                'href': 'https://t.me/pazuza',
-                'text': '@pazuza'
-            },
-            {
-                'icon': 'icofont-linkedin',
-                'href': 'https://www.linkedin.com/in/apanchenko',
-                'text': 'linkedin.com/in/apanchenko'
-            },
-        ],
+        **author.model_dump(),
         'experience': [
             {
                 'position': 'Python developer',

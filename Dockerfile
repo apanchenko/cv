@@ -25,4 +25,4 @@ COPY --from=build /opt/.venv /opt/.venv
 COPY prisma ./prisma
 COPY src ./src
 
-CMD ["python", "src/cv/main.py"]
+CMD ["uvicorn", "cv.main:app", "--host", "0.0.0.0", "--port", "80"]

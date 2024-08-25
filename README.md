@@ -6,12 +6,16 @@ Generate resume in PDF format.
 
 ```shell
 uv venv --python 3.12.4 --preview
-. .venv/bin/activate.fish           # Activate the virtual environment
+. .venv/bin/activate.fish                 # Activate the virtual environment
 uv sync
-python src/cv/main.py                      # Run local server
-uvicorn cv.main:app --reload --port 5000
+uvicorn cv.main:app --reload --port 5000  # Run local server
 docker compose up --build -d
 docker compose down
+
+# dev:
+prisma db push
+prisma migrate dev --name init
+prisma migrate deploy
 ```
 
 ## Backlog
@@ -22,6 +26,7 @@ docker compose down
 - auth
 - editor
 - [dev container](https://code.visualstudio.com/docs/devcontainers/containers)
+- consider [tailwindcss](https://tailwindcss.com/)
 
 ## Links
 
