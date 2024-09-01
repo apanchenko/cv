@@ -34,6 +34,6 @@ prisma migrate deploy
 - [uv](https://docs.astral.sh/uv/)
 - [ruff](https://docs.astral.sh/ruff/)
 - [playwright](https://playwright.dev/python/)
-- [prisma](https://github.com/RobertCraigie/prisma-client-py)
+- [prisma](https://prisma-client-py.readthedocs.io)
 - [htmx](https://htmx.org/)
 - [examples](https://github.com/marty331/fasthtmx/)

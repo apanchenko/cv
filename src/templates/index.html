@@ -3,9 +3,9 @@
 
 <div class="name">{{name}}</div>
 
-{% if address|length %}
+{% if addresses|length %}
 <address>
-    {% for addr in address %}
+    {% for addr in addresses %}
     <div>
         <i class={{addr.icon}}></i>
         <a href={{addr.href}}>{{addr.text}}</a>
@@ -14,9 +14,9 @@
 </address>
 {% endif %}
 
-{% if experience|length %}
+{% if experiences|length %}
 <div class="cat">Experience</div>
-{% for exp in experience %}
+{% for exp in experiences %}
     <div class="position">{{exp.position}}
         <span class="period"> • {{exp.since}} - {{exp.till}}</span>
     </div>
@@ -26,10 +26,10 @@
 {% endfor %}
 {% endif %}
 
-{% if education|length %}
+{% if educations|length %}
 <div class="cat">Education</div>
 <ul class="desc">
-    {% for ed in education %}
+    {% for ed in educations %}
     <li>
         {{ed.text}}
 
@@ -52,7 +52,7 @@
 <div class="cat">Skills</div>
 <ul class="skills">
     {% for skill in skills %}
-    <li>• {{skill}}</li>
+    <li>• {{skill.name}}</li>
     {% endfor %}
 </ul>
 {% endif %}
