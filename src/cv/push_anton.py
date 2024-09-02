@@ -4,6 +4,9 @@ from cv.deps import with_db
 
 async def push():
     async with with_db() as db:
+        if await db.author.find_first(where={'name': 'Anton Panchenko'}):
+            return
+
         await db.author.create(
             data={
                 'name': 'Anton Panchenko',
