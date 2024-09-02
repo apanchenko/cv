@@ -3,18 +3,17 @@ services:
     image: postgres:16.3-alpine
     volumes:
       - data:/var/lib/postgresql/data/
-    ports:
-      - "5440:5432"
     environment:
-      POSTGRES_USER:     ${POSTGRES_USR}
+      POSTGRES_USER: ${POSTGRES_USR}
       POSTGRES_PASSWORD: ${POSTGRES_PWD}
     restart: always
 
   backend:
-    build:
-      dockerfile: Dockerfile
+    build: .
     ports:
-      - "8000:80"
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USR}:${POSTGRES_PWD}@db:5432/${POSTGRES_USR}
     depends_on:
       - db
 

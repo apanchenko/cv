@@ -21,7 +21,6 @@ prisma migrate deploy
 ## Backlog
 
 - render model
-  - do not expose db port
 - ci/cd with [github actions](https://docs.github.com/en/actions)
 - auth
 - editor

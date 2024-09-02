@@ -11,8 +11,7 @@ COPY src ./src
 ENV UV_CACHE_DIR=/opt/uv-cache/
 RUN uv venv
 RUN . .venv/bin/activate
-RUN --mount=type=cache,target=/opt/uv-cache \
-    uv sync --no-dev
+RUN --mount=type=cache,target=/opt/uv-cache uv sync --no-dev
 
 
 FROM python:3.12.4-slim
@@ -24,5 +23,9 @@ ENV PATH="/opt/.venv/bin:$PATH"
 COPY --from=build /opt/.venv /opt/.venv
 COPY prisma ./prisma
 COPY src ./src
+COPY entrypoint.sh .
+#RUN python -m prisma generate
 
-CMD ["uvicorn", "cv.main:app", "--host", "0.0.0.0", "--port", "80"]
+#CMD ["uvicorn", "cv.main:app", "--host", "0.0.0.0", "--port", "8000"]
+RUN chmod +x ./entrypoint.sh
+CMD ["./entrypoint.sh"]
