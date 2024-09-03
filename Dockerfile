@@ -21,6 +21,5 @@ COPY --from=build /opt/.venv /opt/.venv
 COPY prisma ./prisma
 COPY src ./src
 
-CMD python -m prisma db push &&\
-    python -m cv.seed &&\
+CMD python -m prisma generate &&\
     uvicorn cv.main:app --host 0.0.0.0 --port 8000

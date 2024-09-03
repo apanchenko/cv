@@ -5,6 +5,9 @@ Generate resume in PDF format.
 ## Generate the CV
 
 ```shell
+docker compose run --rm seed                # seed the database
+docker compose down db                      # stop the database
+
 docker compose up --build -d
 docker compose down
 
