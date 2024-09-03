@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block main_content %}
+
+<div class="name">{{name}}</div>
+
+{% if addresses|length %}
+<address>
+    {% for addr in addresses %}
+    <div>
+        <i class={{addr.icon}}></i>
+        <a href={{addr.href}}>{{addr.text}}</a>
+    </div>
+    {% endfor %}
+</address>
+{% endif %}
+
+{% if experiences|length %}
+<div class="cat">Experience</div>
+{% for exp in experiences %}
+    <div class="position">{{exp.position}}
+        <span class="period"> • {{exp.since}} - {{exp.till}}</span>
+    </div>
+    <p class="company"><a href="{{exp.href}}">{{exp.link}}</a></p>
+    <p class="desc">{{exp.text|safe}}</p>
+    <p class="desc">{{exp.tech|safe}}</p>
+{% endfor %}
+{% endif %}
+
+{% if educations|length %}
+<div class="cat">Education</div>
+<ul class="desc">
+    {% for ed in educations %}
+    <li>
+        {{ed.text}}
+
+        {% if ed.href %}
+            <a href="{{ed.href}}">
+                {{ed.link}}
+                {% if ed.abbr %}<abbr>{{ed.abbr}}</abbr>{% endif %}
+            </a>
+        {% endif %}
+
+        {% if ed.year %}
+        <span class="period"> • <time datetime="{{ed.year}}">{{ed.year}}</time></span>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if skills|length %}
+<div class="cat">Skills</div>
+<ul class="skills">
+    {% for skill in skills %}
+    <li>• {{skill.name}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

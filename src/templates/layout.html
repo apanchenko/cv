@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anton Panchenko CV</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="static/icofont.min.css">
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+        body {
+            margin: 0.7in;
+        }
+        .name {
+            font-size: 32px;
+            font-weight: bold;
+        }
+        address {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        i {
+            font-size: x-large;
+            margin-right: 6px;
+        }
+
+        .cat {
+            display: block;
+            margin: 24px 0 12px;
+            font-size: 20px;
+            font-weight: bold;
+            border: 0;
+        }
+        .position {
+            margin: 12px 0 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .period {
+            font-weight: lighter;
+            color: #444;
+        }
+        .company {
+            font-size: 14px;
+            padding-left: 1.5em;
+            margin: 6px 0;
+        }
+        .desc {
+            font-size: 14px;
+            padding-left: 1.5em;
+            margin: 6px 0;
+            line-height: 1.5;
+        }
+        .skills {
+            margin: 6px 0;
+            padding-left: 0.5em;
+            margin: 0;
+            list-style: none;
+        }
+        .skills li {
+            line-height: 1.5;
+            font-size: 14px;
+            display: inline;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .logo {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        {% block main_content %}{% endblock %}
+    </div>
+</body>
+
+</html>

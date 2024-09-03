@@ -3,4 +3,5 @@
 .venv
 .env
 .ruff_cache
-.data
+.nicegui
+__pycache__

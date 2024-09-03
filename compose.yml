@@ -1,14 +1,31 @@
 services:
-  cv_db:
+  db:
     image: postgres:16.3-alpine
     volumes:
-      - cv_data:/var/lib/postgresql/data/
-    ports:
-      - "5440:5432"
+      - data:/var/lib/postgresql/data/
     environment:
-      POSTGRES_USER:     ${POSTGRES_USR}
+      POSTGRES_USER: ${POSTGRES_USR}
       POSTGRES_PASSWORD: ${POSTGRES_PWD}
     restart: always
 
+  seed:
+    build: .
+    command: sh -c "python -m prisma db push && python -m cv.seed"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USR}:${POSTGRES_PWD}@db:5432/${POSTGRES_USR}
+    depends_on:
+      - db
+    profiles:
+      - seed
+
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USR}:${POSTGRES_PWD}@db:5432/${POSTGRES_USR}
+    depends_on:
+      - db
+
 volumes:
-  cv_data:
+  data:

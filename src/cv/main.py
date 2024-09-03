@@ -1,20 +1,29 @@
-from pathlib import Path
+from fastapi import Depends, Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 
-from playwright.sync_api import Playwright, sync_playwright
+from cv.app import create_application
+from cv.deps import get_db
+from prisma import Prisma
 
+app = create_application()
 
-def run(playwright: Playwright) -> None:
-    """Start browser and save to pdf."""
-    chromium = playwright.chromium
-    browser = chromium.launch()
-    page = browser.new_page()
-    page.goto(f'file://{Path.cwd()}/cv.html')
-    page.pdf(
-        format='A4',
-        path='Anton Panchenko CV 2024.pdf',
-    )
-    browser.close()
+templates = Jinja2Templates(directory='src/templates')
 
-if __name__ == '__main__':
-    with sync_playwright() as playwright:
-        run(playwright)
+@app.get('/')
+async def home_page(
+    request: Request,
+    db: Prisma = Depends(get_db),
+) -> HTMLResponse:
+    """Home page."""
+    author = await db.author.find_first(include={
+        'addresses': True,
+        'skills': True,
+        'educations': True,
+        'experiences': True,
+    })
+
+    return templates.TemplateResponse('index.html', {
+        'request': request,
+        **author.model_dump(),
+    })
