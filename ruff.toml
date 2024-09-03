@@ -8,6 +8,7 @@ ignore = [
     "D100", # undocumented-public-module
     "D203", # one-blank-line-before-class
     "D213", # multi-line-summary-second-line
+    "B008",
 ]
 
 [lint.flake8-quotes]

@@ -22,5 +22,5 @@ COPY prisma ./prisma
 COPY src ./src
 
 CMD python -m prisma db push &&\
-    python -m cv.push_anton &&\
+    python -m cv.seed &&\
     uvicorn cv.main:app --host 0.0.0.0 --port 8000

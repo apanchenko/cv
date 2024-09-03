@@ -5,25 +5,23 @@ Generate resume in PDF format.
 ## Generate the CV
 
 ```shell
-uv venv --python 3.12.4 --preview
-. .venv/bin/activate.fish                 # Activate the virtual environment
-uv sync
-uvicorn cv.main:app --reload --port 5000  # Run local server
 docker compose up --build -d
 docker compose down
 
 # dev:
-prisma db push
-prisma migrate dev --name init
-prisma migrate deploy
+uv venv --python 3.12.4 --preview           # create environment
+. .venv/bin/activate.fish                   # activate the environment
+uv sync                                     # install dependencies
+docker compose run -p 5441:5432 -d db       # run database
+prisma db push                              # push schema to database
+uvicorn cv.main:app --reload --port 8000    # run local server
 ```
 
 ## Backlog
 
-- render model
+- editor
 - ci/cd with [github actions](https://docs.github.com/en/actions)
 - auth
-- editor
 - [dev container](https://code.visualstudio.com/docs/devcontainers/containers)
 - consider [tailwindcss](https://tailwindcss.com/)
 
