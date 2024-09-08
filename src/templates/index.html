@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 {% block main_content %}
 
+{% if include_header %}
+<button hx-post="/generate">Generate</button>
+{% endif %}
+
 <div class="name">{{name}}</div>
 
 {% if addresses|length %}

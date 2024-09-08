@@ -38,7 +38,7 @@ uv venv --python 3.12.4 --preview           # create environment
 uv sync                                     # install dependencies
 docker compose run -p 5441:5432 -d db       # run database
 prisma db push                              # push schema to database
-uvicorn cv.main:app --reload --port 8000    # run local server
+uvicorn cv.api:app --reload --port 8000    # run local server
 ```
 
 ## Backlog
