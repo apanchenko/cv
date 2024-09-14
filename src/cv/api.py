@@ -2,6 +2,7 @@ from fastapi import Depends, Request, Response
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from playwright.async_api import Page
+from secrets import token_urlsafe
 
 from cv.app import create_application
 from cv.deps import get_db, get_page
@@ -15,7 +16,7 @@ templates = Jinja2Templates(directory='src/templates')
 async def home_page(
     request: Request,
     db: Prisma = Depends(get_db), *,
-    header: bool | None = True,
+    header: bool = True,
 ) -> HTMLResponse:
     """Home page."""
     author = await db.author.find_first(include={
@@ -40,10 +41,13 @@ async def generate(
     await page.goto(
         url='http://localhost:8000?header=False',
     )
+
+    name = token_urlsafe(16)
+
     await page.pdf(
         format='A4',
-        path='src/static/anton.pdf',
+        path=f'src/static/{name}/anton.pdf',
     )
     return Response(
-        headers={'HX-Redirect': '/static/anton.pdf'},
+        headers={'HX-Redirect': f'/static/{name}/anton.pdf'},
     )
