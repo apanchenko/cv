@@ -1,0 +1,13 @@
+<form hx-put="/edit/name/{{author_id}}"
+      hx-target="this"
+      hx-swap="outerHTML">
+
+  <input type="text"
+         name="author_name"
+         value="{{author_name}}">
+
+  <button class="btn"
+          hx-put="/edit/name/{{author_id}}">
+    Submit
+  </button>
+</form>

@@ -6,5 +6,9 @@
     "python.terminal.activateEnvInCurrentTerminal": true,
     "python.analysis.diagnosticSeverityOverrides": {
         "reportMissingImports": false,
+    },
+    "editor.tabSize": 4,
+    "[html]": {
+        "editor.tabSize": 2
     }
 }

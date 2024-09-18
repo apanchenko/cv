@@ -5,35 +5,37 @@
 <button hx-post="/generate">Generate</button>
 {% endif %}
 
-<div class="name">{{name}}</div>
+{{ render_partial('author_name.html',
+                  author_id=author.id,
+                  author_name=author.name) }}
 
-{% if addresses|length %}
+{% if author.addresses|length %}
 <address>
-    {% for addr in addresses %}
-    <div>
-        <i class={{addr.icon}}></i>
-        <a href={{addr.href}}>{{addr.text}}</a>
-    </div>
-    {% endfor %}
+  {% for addr in author.addresses %}
+  <div>
+    <i class={{addr.icon}}></i>
+    <a href={{addr.href}}>{{addr.text}}</a>
+  </div>
+  {% endfor %}
 </address>
 {% endif %}
 
-{% if experiences|length %}
+{% if author.experiences|length %}
 <div class="cat">Experience</div>
-{% for exp in experiences %}
-    <div class="position">{{exp.position}}
-        <span class="period"> • {{exp.since}} - {{exp.till}}</span>
-    </div>
-    <p class="company"><a href="{{exp.href}}">{{exp.link}}</a></p>
-    <p class="desc">{{exp.text|safe}}</p>
-    <p class="desc">{{exp.tech|safe}}</p>
+{% for exp in author.experiences %}
+  <div class="position">{{exp.position}}
+    <span class="period"> • {{exp.since}} - {{exp.till}}</span>
+  </div>
+  <p class="company"><a href="{{exp.href}}">{{exp.link}}</a></p>
+  <p class="desc">{{exp.text|safe}}</p>
+  <p class="desc">{{exp.tech|safe}}</p>
 {% endfor %}
 {% endif %}
 
-{% if educations|length %}
+{% if author.educations|length %}
 <div class="cat">Education</div>
 <ul class="desc">
-    {% for ed in educations %}
+    {% for ed in author.educations %}
     <li>
         {{ed.text}}
 
@@ -52,10 +54,10 @@
 </ul>
 {% endif %}
 
-{% if skills|length %}
+{% if author.skills|length %}
 <div class="cat">Skills</div>
 <ul class="skills">
-    {% for skill in skills %}
+    {% for skill in author.skills %}
     <li>• {{skill.name}}</li>
     {% endfor %}
 </ul>
