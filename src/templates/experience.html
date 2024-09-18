@@ -1,0 +1,12 @@
+<div hx-target="this"
+     hx-swap="outerHTML"
+     hx-get="/exp/{{exp.id}}">
+
+  <div class="position">{{exp.position}}
+    <span class="period"> • {{exp.since}} - {{exp.till}}</span>
+  </div>
+  <p class="company"><a href="{{exp.href}}">{{exp.link}}</a></p>
+  <p class="desc">{{exp.text|safe}}</p>
+  <p class="desc">{{exp.tech|safe}}</p>
+
+</div>

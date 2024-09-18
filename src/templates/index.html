@@ -5,7 +5,7 @@
 <button hx-post="/generate">Generate</button>
 {% endif %}
 
-{{ render_partial('author_name.html',
+{{ render_partial('author.html',
                   author_id=author.id,
                   author_name=author.name) }}
 
@@ -23,12 +23,13 @@
 {% if author.experiences|length %}
 <div class="cat">Experience</div>
 {% for exp in author.experiences %}
-  <div class="position">{{exp.position}}
+  {{ render_partial('experience.html', exp=exp) }}
+  <!-- <div class="position">{{exp.position}}
     <span class="period"> • {{exp.since}} - {{exp.till}}</span>
   </div>
   <p class="company"><a href="{{exp.href}}">{{exp.link}}</a></p>
   <p class="desc">{{exp.text|safe}}</p>
-  <p class="desc">{{exp.tech|safe}}</p>
+  <p class="desc">{{exp.tech|safe}}</p> -->
 {% endfor %}
 {% endif %}
 

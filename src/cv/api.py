@@ -1,3 +1,4 @@
+from math import exp
 from typing import Annotated
 from fastapi import Depends, Request, Response, Form
 from fastapi.responses import HTMLResponse
@@ -37,7 +38,6 @@ async def home_page(
 
 @app.post('/generate')
 async def generate(
-    _request: Request,
     page: Page = Depends(get_page),
 ) -> Response:
     """Generate PDF."""
@@ -66,10 +66,12 @@ async def edit_name(
     db: Prisma = Depends(get_db),
 ) -> HTMLResponse:
     """Get edit name form."""
-    author = await db.author.find_first()
+    author = await db.author.find_unique(
+        where = {'id': author_id},
+    )
     return templates.TemplateResponse(
         request=request,
-        name='author_name_edit.html',
+        name='author_edit.html',
         context={
             'author_id': author.id,
             'author_name': author.name,
@@ -98,9 +100,61 @@ async def edit_name(
     )
     return templates.TemplateResponse(
         request=request,
-        name='author_name.html',
+        name='author.html',
         context={
             'author_id': author.id,
             'author_name': author.name,
         },
+    )
+
+
+@app.get(
+    '/exp/{exp_id}',
+    response_class=HTMLResponse,
+)
+async def edit_exp(
+    request: Request,
+    exp_id: int,
+    db: Prisma = Depends(get_db),
+) -> HTMLResponse:
+    """Get edit experience form."""
+    exp = await db.experience.find_unique(
+        where = {'id': exp_id},
+    )
+    return templates.TemplateResponse(
+        request=request,
+        name='experience_edit.html',
+        context={'exp': exp.model_dump()},
+    )
+
+
+@app.put(
+    '/exp/{exp_id}',
+    response_class=HTMLResponse,
+)
+async def edit_name(
+    request: Request,
+    exp_id: int,
+    position: Annotated[str, Form()],
+    href: Annotated[str, Form()],
+    link: Annotated[str, Form()],
+    text: Annotated[str, Form()],
+    tech: Annotated[str, Form()],
+    db: Prisma = Depends(get_db),
+) -> HTMLResponse:
+    """Put experience."""
+    exp = await db.experience.update(
+        where = {'id': exp_id},
+        data = {
+            'position': position,
+            'href': href,
+            'link': link,
+            'text': text,
+            'tech': tech,
+        },
+    )
+    return templates.TemplateResponse(
+        request=request,
+        name='experience.html',
+        context={'exp': exp.model_dump()},
     )

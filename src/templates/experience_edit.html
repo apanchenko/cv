@@ -1,0 +1,13 @@
+<form hx-put="/exp/{{exp.id}}"
+      hx-target="this"
+      hx-swap="outerHTML">
+
+  <input type="text" name="position" value="{{exp.position}}">
+  <input type="text" name="href" value="{{exp.href}}">
+  <input type="text" name="link" value="{{exp.link}}">
+  <input type="text" name="text" value="{{exp.text}}">
+  <input type="text" name="tech" value="{{exp.tech}}">
+
+  <button class="btn">Submit</button>
+
+</form>
