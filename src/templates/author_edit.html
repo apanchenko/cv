@@ -1,4 +1,4 @@
-<form hx-put="/edit/name/{{author_id}}"
+<form hx-put="/author/{{author_id}}"
       hx-target="this"
       hx-swap="outerHTML">
 
@@ -6,8 +6,7 @@
          name="author_name"
          value="{{author_name}}">
 
-  <button class="btn">
-    Submit
-  </button>
+  <button class="btn">Submit</button>
+  <button class="btn" hx-get="/author/{{author_id}}">Cancel</button>
 
 </form>

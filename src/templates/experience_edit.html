@@ -1,4 +1,4 @@
-<form hx-put="/exp/{{exp.id}}"
+<form hx-put="/experience/{{exp.id}}"
       hx-target="this"
       hx-swap="outerHTML">
 
@@ -9,5 +9,6 @@
   <input type="text" name="tech" value="{{exp.tech}}">
 
   <button class="btn">Submit</button>
+  <button class="btn" hx-get="/experience/{{exp.id}}">Cancel</button>
 
 </form>
