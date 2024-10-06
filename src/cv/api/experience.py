@@ -54,7 +54,7 @@ async def edit_experience(
     '/{exp_id}',
     response_class=HTMLResponse,
 )
-async def edit_name(
+async def save_experience(
     request: Request,
     exp_id: int,
     position: Annotated[str, Form()],
@@ -78,5 +78,7 @@ async def edit_name(
     return templates.TemplateResponse(
         request=request,
         name='experience.html',
-        context={'exp': exp.model_dump()},
+        context={
+            'exp': exp.model_dump(exclude={'author_id'}),
+        },
     )

@@ -21,7 +21,11 @@ async def home_page(
         'addresses': True,
         'skills': True,
         'educations': True,
-        'experiences': True,
+        'experiences': {
+            'order_by': {
+                'since': 'desc',
+            },
+        },
     })
     return templates.TemplateResponse('index.html', {
         'request': request,

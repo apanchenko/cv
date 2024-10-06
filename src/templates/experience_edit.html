@@ -1,12 +1,32 @@
 <form hx-put="/experience/{{exp.id}}"
       hx-target="this"
       hx-swap="outerHTML">
+  
+  <div class="position">
+    <input type="text" name="position" value="{{exp.position}}">
+    <span class="period"> • {{exp.since}} - {{exp.till}}</span>
+  </div>
 
-  <input type="text" name="position" value="{{exp.position}}">
-  <input type="text" name="href" value="{{exp.href}}">
-  <input type="text" name="link" value="{{exp.link}}">
-  <input type="text" name="text" value="{{exp.text}}">
-  <input type="text" name="tech" value="{{exp.tech}}">
+  <p class="company">
+    <input type="text" name="link" value="{{exp.link}}">
+    <input type="text" name="href" value="{{exp.href}}">
+  </p>
+
+  <p class="desc">
+    <input type="text"
+           name="text"
+           placeholder="Description"
+           value="{{exp.text}}"
+           size="50">
+  </p>
+
+  <p class="desc">
+    <input type="text"
+           name="tech"
+           placeholder="Skills"
+           value="{{exp.tech}}"
+           size="50">
+  </p>
 
   <button class="btn">Submit</button>
   <button class="btn" hx-get="/experience/{{exp.id}}">Cancel</button>
